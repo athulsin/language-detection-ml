@@ -1,100 +1,148 @@
 **Language Detection using NLP & Machine Learning**
 
-A complete end-to-end Language Detection System built using Machine Learning and Natural Language Processing techniques.
-The model uses TF-IDF (character n-grams) + Logistic Regression, with Random Oversampling to handle class imbalance.
+A complete end-to-end Language Detection System built using TF-IDF (character n-grams), Random Oversampling, and Logistic Regression, designed to classify text into multiple languages with high accuracy.
 
-📸 Screenshots
-🔹 Web Interface (Home Page)
+This project includes:
 
-🔹 Model Performance & Evaluation
+✔ Dataset preprocessing
+✔ Character-level TF-IDF vectorization
+✔ Balanced training using RandomOverSampler
+✔ Model training & evaluation
+✔ A lightweight Python prediction script
+✔ Interactive web UI / HTML interface
+✔ Project report & presentation
 
-📁 Project Structure
-├── src/
-│   ├── app.py                    # Prediction / Web interface script
-│   └── train_and_save_model.py   # Model training script
-├── data/
-│   └── Language Detection.csv    # Dataset
-├── models/
-│   ├── vectorizer.pkl            # TF-IDF vectorizer
-│   └── model_compressed.pkl.gz   # Trained model
-├── html/
-│   ├── index.html                # Web UI
-│   └── performance.html          # Evaluation output
+Features
+
+Multi-language text classification
+
+Character-level TF-IDF: Works well even with short texts
+
+Random Oversampling: Handles imbalanced dataset effectively
+
+Logistic Regression: Fast, simple, and highly interpretable
+
+Interactive UI (HTML/Python)
+
+High accuracy & detailed classification metrics
+
+Technologies Used
+Category	Tools
+Programming	Python
+ML / NLP	Scikit-Learn, TF-IDF, Logistic Regression
+Data Balancing	imbalanced-learn (RandomOverSampler)
+Web UI	HTML, CSS
+Others	Pandas, Joblib
+
+📁 Project Structure (Suggested)
+├── app.py                  
+├── train_and_save_model.py   
+├── Language Detection.csv    
+├── model_compressed.pkl.gz   
+├── vectorizer.pkl            
+├── index.html                
+├── performance.html          
 ├── docs/
-│   ├── mini_project.pdf          # Project report
-│   └── AML_report.pptx           # Presentation
-├── screenshots/
-│   ├── home.png                  # UI screenshot
-│   └── model.png                 # Model evaluation screenshot
-└── README.md
+│   ├── mini_project.pdf      
+│   └── AML_report.pptx       
+└── README.md                 
+📊 Dataset
 
-🧠 Overview
+The dataset contains two columns:
 
-This project detects the language of any input text using:
+Column	Description
+Text	Input text
+Language	Language label for that text
 
-Character-level TF-IDF
+Example:
 
-n-gram range = (2,4)
+Text,Language
+"Hello, how are you?",English
+"Bonjour tout le monde",French
+"नमस्ते दुनिया",Hindi
 
-Logistic Regression classifier
 
-RandomOverSampler for class balancing
-
-The model performs well even on short text, because character patterns like th, na, ell, que, नम help identify languages accurately.
+Duplicates and missing values are removed before training.
 
 ⚙️ How the Model Works
-1️⃣ Data Cleaning
+1. Preprocessing
 
-Remove duplicate text
+Remove duplicates
 
-Remove missing values
+Drop null rows
 
-2️⃣ Feature Extraction – TF-IDF
+2. Vectorization
+
+We use TF-IDF with character n-grams (2 to 4):
+
 vectorizer = TfidfVectorizer(analyzer="char", ngram_range=(2,4))
 
-3️⃣ Balancing the Dataset
+
+This captures patterns like
+th, he, ell, bonjour, etc.
+
+3. Balancing the classes
+
+Imbalanced datasets can bias the model.
+We use RandomOverSampler:
+
 oversample = RandomOverSampler()
 X_bal, y_bal = oversample.fit_resample(X_vec, y)
 
-4️⃣ Model Training
+4. Training the model
 model = LogisticRegression(max_iter=2000)
 model.fit(X_train, y_train)
 
-5️⃣ Evaluation
+5. Evaluation
 
-Accuracy, precision, recall, and F1-score are generated.
-You can view them in:
+The model is evaluated using:
 
-html/performance.html
+Accuracy
 
-▶️ Running the Project
-Install dependencies
+Precision
+
+Recall
+
+F1-Score
+
+▶️ Running the Model
+1. Install dependencies
 pip install -r requirements.txt
 
-Train the model
-python src/train_and_save_model.py
+2. Train & save the model
+python train_and_save_model.py
 
-Run the prediction app
-python src/app.py
+3. Run the prediction app
+python app.py
 
-Use the HTML UI
+4. Use the HTML interface
 
 Open:
 
-html/index.html
+index.html
 
-🧪 Example Usage
-from src.app import predict_language
-print(predict_language("Bonjour tout le monde"))
+🧪 Example Prediction
+from app import predict_language
+
+print(predict_language("Bonjour, comment allez-vous?"))
 
 
 Output:
 
 French
 
+📈 Model Performance
+
+A detailed classification report is available inside:
+
+performance.html
+
+
+Including precision, recall, and F1-score for each language.
+
 📄 Documents
 
-All documentation files are in the docs/ folder:
+The project report and presentation slides are available in the docs/ section:
 
 mini_project.pdf
 
@@ -102,11 +150,13 @@ AML_report.pptx
 
 📝 Future Improvements
 
-Upgrade to Deep Learning models (BERT / LSTM)
+Deploy as a Streamlit Web App
 
-Deploy using Streamlit / FastAPI
+Add a REST API using FastAPI
 
-Build a mobile app version
+Use Deep Learning models (LSTM / BERT) for better accuracy
+
+Support real-time detection in a chat interface
 
 👨‍💻 Author
 
