@@ -1,115 +1,90 @@
-Language Detection using NLP & Machine Learning
+**Language Detection using NLP & Machine Learning**
 
-A complete end-to-end Language Detection System built using TF-IDF (character n-grams), Random Oversampling, and Logistic Regression, designed to classify text into multiple languages with high accuracy.
+A complete end-to-end Language Detection System built using Machine Learning and Natural Language Processing techniques.
+The model uses TF-IDF (character n-grams) + Logistic Regression, with Random Oversampling to handle class imbalance.
 
-This project includes:
+📸 Screenshots
+🔹 Web Interface (Home Page)
 
-✔ Dataset preprocessing
-✔ Character-level TF-IDF vectorization
-✔ Balanced training using RandomOverSampler
-✔ Model training & evaluation
-✔ A lightweight Python prediction script
-✔ Interactive web UI (HTML)
-✔ Project report & presentation
-✔ Screenshots & sample outputs
-
-📸 Screenshots & Demo
-🔹 1. GitHub Project Structure
-
-Upload this screenshot as: screenshots/repo_structure.png
-
-![Project Structure](screenshots/repo_structure.png)
-
-🔹 2. Sample Prediction Output (Python)
-
-Upload as: screenshots/python_prediction.png
-
-![Python Prediction Output](screenshots/python_prediction.png)
-
-🔹 3. HTML Interface Screenshot
-
-Upload as: screenshots/html_ui.png
-
-![HTML UI Screenshot](screenshots/html_ui.png)
-
-🔹 4. Model Performance Metrics
-
-Upload as: screenshots/performance_report.png
-
-![Performance Report](screenshots/performance_report.png)
+🔹 Model Performance & Evaluation
 
 📁 Project Structure
-├── app.py                    # Prediction / Web interface script
-├── train_and_save_model.py   # Model training script
-├── Language Detection.csv    # Dataset
-├── model_compressed.pkl.gz   # Trained model
-├── vectorizer.pkl            # Saved TF-IDF vectorizer
-├── index.html                # Web UI for text input
-├── performance.html          # Model evaluation visual report
+├── src/
+│   ├── app.py                    # Prediction / Web interface script
+│   └── train_and_save_model.py   # Model training script
+├── data/
+│   └── Language Detection.csv    # Dataset
+├── models/
+│   ├── vectorizer.pkl            # TF-IDF vectorizer
+│   └── model_compressed.pkl.gz   # Trained model
+├── html/
+│   ├── index.html                # Web UI
+│   └── performance.html          # Evaluation output
 ├── docs/
-│   ├── mini_project.pdf      # Project report
-│   └── AML_report.pptx       # Presentation PPT
+│   ├── mini_project.pdf          # Project report
+│   └── AML_report.pptx           # Presentation
 ├── screenshots/
-│   ├── repo_structure.png
-│   ├── python_prediction.png
-│   ├── html_ui.png
-│   └── performance_report.png
-└── README.md                 # Project documentation
+│   ├── home.png                  # UI screenshot
+│   └── model.png                 # Model evaluation screenshot
+└── README.md
 
-🧠 Technologies Used
-Category	Tools
-Programming	Python
-ML / NLP	Scikit-Learn, TF-IDF, Logistic Regression
-Data Balancing	imbalanced-learn (RandomOverSampler)
-Web UI	HTML, CSS
-Evaluation	Classification Report, Accuracy Score
+🧠 Overview
+
+This project detects the language of any input text using:
+
+Character-level TF-IDF
+
+n-gram range = (2,4)
+
+Logistic Regression classifier
+
+RandomOverSampler for class balancing
+
+The model performs well even on short text, because character patterns like th, na, ell, que, नम help identify languages accurately.
+
 ⚙️ How the Model Works
-1. Preprocessing
+1️⃣ Data Cleaning
 
-Remove duplicate rows
+Remove duplicate text
 
-Remove null rows
+Remove missing values
 
-2. TF-IDF Vectorization
-
-Using character n-grams (2 to 4):
-
+2️⃣ Feature Extraction – TF-IDF
 vectorizer = TfidfVectorizer(analyzer="char", ngram_range=(2,4))
 
-3. Balancing
+3️⃣ Balancing the Dataset
+oversample = RandomOverSampler()
+X_bal, y_bal = oversample.fit_resample(X_vec, y)
 
-Using:
+4️⃣ Model Training
+model = LogisticRegression(max_iter=2000)
+model.fit(X_train, y_train)
 
-RandomOverSampler()
+5️⃣ Evaluation
 
-4. Logistic Regression Model
+Accuracy, precision, recall, and F1-score are generated.
+You can view them in:
 
-Trained with:
-
-LogisticRegression(max_iter=2000)
-
-5. Evaluation
-
-Metrics available in performance.html.
+html/performance.html
 
 ▶️ Running the Project
 Install dependencies
 pip install -r requirements.txt
 
-Train & save model
-python train_and_save_model.py
+Train the model
+python src/train_and_save_model.py
 
-Run prediction
-python app.py
+Run the prediction app
+python src/app.py
 
-Open HTML UI
+Use the HTML UI
 
 Open:
 
-index.html
+html/index.html
 
 🧪 Example Usage
-from app import predict_language
+from src.app import predict_language
 print(predict_language("Bonjour tout le monde"))
 
 
@@ -117,17 +92,9 @@ Output:
 
 French
 
-📊 Model Performance
-
-A detailed performance result is available in:
-
-performance.html
-
-Screenshot included in the screenshots folder
-
 📄 Documents
 
-Available in /docs:
+All documentation files are in the docs/ folder:
 
 mini_project.pdf
 
@@ -135,13 +102,11 @@ AML_report.pptx
 
 📝 Future Improvements
 
-Deploy with Streamlit
+Upgrade to Deep Learning models (BERT / LSTM)
 
-Add FastAPI REST endpoint
+Deploy using Streamlit / FastAPI
 
-Use Deep Learning models (LSTM, BERT)
-
-Create a mobile app version
+Build a mobile app version
 
 👨‍💻 Author
 
