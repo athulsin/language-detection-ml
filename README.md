@@ -1,166 +1,106 @@
-**Language Detection using NLP & Machine Learning**
+**Language Detection using NLP & Machine Learning
+**
+A complete end-to-end Language Detection System built using TF-IDF, Logistic Regression, and Random Oversampling.
 
-A complete end-to-end Language Detection System built using TF-IDF (character n-grams), Random Oversampling, and Logistic Regression, designed to classify text into multiple languages with high accuracy.
+📸 Screenshots
+Home Page
 
-This project includes:
+Model Performance
 
-✔ Dataset preprocessing
-✔ Character-level TF-IDF vectorization
-✔ Balanced training using RandomOverSampler
-✔ Model training & evaluation
-✔ A lightweight Python prediction script
-✔ Interactive web UI / HTML interface
-✔ Project report & presentation
-
-Features
-
-Multi-language text classification
-
-Character-level TF-IDF: Works well even with short texts
-
-Random Oversampling: Handles imbalanced dataset effectively
-
-Logistic Regression: Fast, simple, and highly interpretable
-
-Interactive UI (HTML/Python)
-
-High accuracy & detailed classification metrics
-
-Technologies Used
-Category	Tools
-Programming	Python
-ML / NLP	Scikit-Learn, TF-IDF, Logistic Regression
-Data Balancing	imbalanced-learn (RandomOverSampler)
-Web UI	HTML, CSS
-Others	Pandas, Joblib
-
-📁 Project Structure (Suggested)
-├── app.py                  
-├── train_and_save_model.py   
-├── Language Detection.csv    
-├── model_compressed.pkl.gz   
-├── vectorizer.pkl            
-├── index.html                
-├── performance.html          
+📁 Project Structure
+├── src/
+│   ├── app.py
+│   └── train_and_save_model.py
+├── data/
+│   └── Language Detection.csv
+├── models/
+│   ├── vectorizer.pkl
+│   └── model_compressed.pkl.gz
+├── html/
+│   ├── index.html
+│   └── performance.html
 ├── docs/
-│   ├── mini_project.pdf      
-│   └── AML_report.pptx       
-└── README.md                 
-📊 Dataset
+│   ├── mini_project.pdf
+│   └── AML_report.pptx
+└── screenshots/
+    ├── home.png
+    └── model.png
 
-The dataset contains two columns:
+🧠 Overview
 
-Column	Description
-Text	Input text
-Language	Language label for that text
+This project detects the language of input text using:
 
-Example:
+Character-level TF-IDF
 
-Text,Language
-"Hello, how are you?",English
-"Bonjour tout le monde",French
-"नमस्ते दुनिया",Hindi
+N-grams (2 to 4)
 
+Logistic Regression
 
-Duplicates and missing values are removed before training.
+Random Oversampling for class balance
 
-⚙️ How the Model Works
-1. Preprocessing
+⚙️ How It Works
+1. Data Cleaning
 
 Remove duplicates
 
-Drop null rows
+Remove missing rows
 
-2. Vectorization
-
-We use TF-IDF with character n-grams (2 to 4):
-
+2. TF-IDF Vectorization
 vectorizer = TfidfVectorizer(analyzer="char", ngram_range=(2,4))
 
-
-This captures patterns like
-th, he, ell, bonjour, etc.
-
-3. Balancing the classes
-
-Imbalanced datasets can bias the model.
-We use RandomOverSampler:
-
+3. Balancing the Dataset
 oversample = RandomOverSampler()
 X_bal, y_bal = oversample.fit_resample(X_vec, y)
 
-4. Training the model
+4. Training
 model = LogisticRegression(max_iter=2000)
 model.fit(X_train, y_train)
 
-5. Evaluation
-
-The model is evaluated using:
-
-Accuracy
-
-Precision
-
-Recall
-
-F1-Score
-
-▶️ Running the Model
-1. Install dependencies
+▶️ Running the Project
+Install Dependencies
 pip install -r requirements.txt
 
-2. Train & save the model
-python train_and_save_model.py
+Train the Model
+python src/train_and_save_model.py
 
-3. Run the prediction app
-python app.py
+Run the Prediction App
+python src/app.py
 
-4. Use the HTML interface
+Open HTML UI
 
-Open:
+Open this file in your browser:
 
-index.html
+html/index.html
 
-🧪 Example Prediction
-from app import predict_language
-
-print(predict_language("Bonjour, comment allez-vous?"))
+🧪 Example Usage
+from src.app import predict_language
+print(predict_language("Bonjour tout le monde"))
 
 
 Output:
 
 French
 
-📈 Model Performance
-
-A detailed classification report is available inside:
-
-performance.html
-
-
-Including precision, recall, and F1-score for each language.
-
 📄 Documents
 
-The project report and presentation slides are available in the docs/ section:
+Located in docs/:
 
 mini_project.pdf
 
 AML_report.pptx
 
-📝 Future Improvements
+📝 Future Enhancements
 
-Deploy as a Streamlit Web App
+Streamlit deployment
 
-Add a REST API using FastAPI
+FastAPI REST API
 
-Use Deep Learning models (LSTM / BERT) for better accuracy
+BERT-based language detection
 
-Support real-time detection in a chat interface
+Mobile app wrapper
 
-👨‍💻 Author
+👤 Author
 
 Athul S. Nair
+Mini Project – Advanced Machine Learning (23CSE514)
 B.Tech CSE – Jain University
-Course: Advanced Machine Learning (23CSE514)
-Mini Project: Language Detection using Machine Learning
