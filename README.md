@@ -61,55 +61,57 @@ This project detects the language of input text using:
 vectorizer = TfididfVectorizer(analyzer="char", ngram_range=(2,4))
 ```
 
-3. Balancing the Dataset
+### 3. Balancing the Dataset
 python
 ```
 oversample = RandomOverSampler()
 X_bal, y_bal = oversample.fit_resample(X_vec, y)
 ```
 
-4. Training
+### 4. Training
 ```
 model = LogisticRegression(max_iter=2000)
 model.fit(X_train, y_train)
 ```
 ▶️ Running the Project
 Install Dependencies
-nginx
-Copy code
+```
 pip install -r requirements.txt
+```
 Train the Model
-bash
-Copy code
+```
 python src/train_and_save_model.py
+```
 Run the Prediction App
-bash
-Copy code
+```
 python src/app.py
+```
 Open HTML UI
 Open this file in your browser:
 
-bash
-Copy code
+```
 html/index.html
-🧪 Example Usage
-python
-Copy code
+```
+Example Usage
+```
 from src.app import predict_language
 print(predict_language("Bonjour tout le monde"))
+```
 Output:
 
-nginx
-Copy code
+```
 French
-📄 Documents
+```
+### 📄 Documents
 Located in docs/:
 
 mini_project.pdf
 
 AML_report.pptx
+```
+```
 
-📝 Future Enhancements
+### 📝 Future Enhancements
 Streamlit deployment
 
 FastAPI REST API
@@ -117,8 +119,12 @@ FastAPI REST API
 BERT-based language detection
 
 Mobile app wrapper
+```
+```
 
-👤 Author
-Athul S. Nair
-Mini Project – Advanced Machine Learning (23CSE514)
-B.Tech CSE – Jain University
+### 👤 Author
+ Athul S. Nair
+ 
+ Mini Project – Advanced Machine Learning (23CSE514)
+ 
+ B.Tech CSE – Jain University
