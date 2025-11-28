@@ -1,106 +1,67 @@
-**Language Detection using NLP & Machine Learning
-**
-A complete end-to-end Language Detection System built using TF-IDF, Logistic Regression, and Random Oversampling.
+AI-Based Fraud Detection in Credit Card Transactions
+Overview
+This project implements an AI-based fraud detection system for credit card transactions using machine learning algorithms. The model is trained to identify fraudulent transactions with high accuracy using various classification techniques.
 
-📸 Screenshots
-Home Page
+Features
+Data Preprocessing: Handles missing values, outliers, and feature scaling
+Exploratory Data Analysis: Comprehensive EDA with visualizations
+Multiple ML Models: Random Forest, Logistic Regression, and Ensemble methods
+Performance Metrics: Accuracy, Precision, Recall, F1-Score, ROC-AUC
+Confusion Matrix & Visualization: Detailed model evaluation
+Imbalanced Data Handling: SMOTE technique for handling class imbalance
+Dataset
+The project uses the Kaggle Credit Card Fraud Detection dataset:
 
+Total Transactions: 284,807
+Fraudulent Transactions: 492 (0.172%)
+Features: 31 (V1-V28, Time, Amount, Class)
+Installation & Setup
+Requirements
+python >= 3.8
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+imbalanced-learn
+Installation
+pip install pandas numpy scikit-learn matplotlib seaborn imbalanced-learn
+Usage
+Option 1: Google Colab (Recommended)
+Open the Fraud_Detection_Notebook.ipynb in Google Colab
+Run all cells sequentially
+The dataset will be automatically downloaded from Kaggle
+Option 2: Local Environment
+Clone the repository
+Install dependencies
+Run the notebook or Python script
+Project Structure
+.
+├── README.md
+├── fraud_detection_notebook.ipynb
+├── fraud_detection.py
+└── requirements.txt
 Model Performance
+Results Summary
+Logistic Regression: ~95% Accuracy
+Random Forest: ~99.9% Accuracy
+ROC-AUC Score: 0.98+
+Key Insights
+Class Imbalance: Fraudulent transactions are extremely rare (0.17%)
+Feature Importance: V4, V12, V14 are top predictive features
+SMOTE Effectiveness: Significantly improves recall for fraud cases
+Random Forest: Best performer with minimal false positives
+Future Improvements
+Implement Deep Learning models (Neural Networks, LSTM)
+Real-time prediction API
+Model deployment on cloud platforms
+Continuous model retraining pipeline
+Author
+Kishan Halageri
 
-📁 Project Structure
-├── src/
-│   ├── app.py
-│   └── train_and_save_model.py
-├── data/
-│   └── Language Detection.csv
-├── models/
-│   ├── vectorizer.pkl
-│   └── model_compressed.pkl.gz
-├── html/
-│   ├── index.html
-│   └── performance.html
-├── docs/
-│   ├── mini_project.pdf
-│   └── AML_report.pptx
-└── screenshots/
-    ├── home.png
-    └── model.png
+License
+MIT License
 
-🧠 Overview
-
-This project detects the language of input text using:
-
-Character-level TF-IDF
-
-N-grams (2 to 4)
-
-Logistic Regression
-
-Random Oversampling for class balance
-
-⚙️ How It Works
-1. Data Cleaning
-
-Remove duplicates
-
-Remove missing rows
-
-2. TF-IDF Vectorization
-vectorizer = TfidfVectorizer(analyzer="char", ngram_range=(2,4))
-
-3. Balancing the Dataset
-oversample = RandomOverSampler()
-X_bal, y_bal = oversample.fit_resample(X_vec, y)
-
-4. Training
-model = LogisticRegression(max_iter=2000)
-model.fit(X_train, y_train)
-
-▶️ Running the Project
-Install Dependencies
-pip install -r requirements.txt
-
-Train the Model
-python src/train_and_save_model.py
-
-Run the Prediction App
-python src/app.py
-
-Open HTML UI
-
-Open this file in your browser:
-
-html/index.html
-
-🧪 Example Usage
-from src.app import predict_language
-print(predict_language("Bonjour tout le monde"))
-
-
-Output:
-
-French
-
-📄 Documents
-
-Located in docs/:
-
-mini_project.pdf
-
-AML_report.pptx
-
-📝 Future Enhancements
-
-Streamlit deployment
-
-FastAPI REST API
-
-BERT-based language detection
-
-Mobile app wrapper
-
-👤 Author
-
-Athul S. Nair
-Mini Project – Advanced Machine Learning (23CSE514)
-B.Tech CSE – Jain University
+References
+Kaggle Dataset: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+Documentation on SMOTE: https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SMOTE.html
