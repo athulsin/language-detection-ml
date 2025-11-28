@@ -1,10 +1,10 @@
-# 🚀 Language Detection using NLP & Machine Learning
+# Language Detection using NLP & Machine Learning
 
 A complete end-to-end Language Detection System built using **TF-IDF**, **Logistic Regression**, and **Random Oversampling**.
 
 ---
 
-## 📸 Screenshots
+## Screenshots / Outputs 
 
 ### Home Page
 ![Home](output/home.png)
@@ -107,11 +107,10 @@ French
 ```
 ### 📄 Documents
 Located in docs/:
-
+```
 mini_project.pdf
 
 AML_report.pptx
-```
 ```
 
 ### 📝 Future Enhancements
