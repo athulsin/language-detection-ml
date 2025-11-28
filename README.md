@@ -7,10 +7,13 @@ A complete end-to-end Language Detection System built using **TF-IDF**, **Logist
 ## 📸 Screenshots
 
 ### Home Page
-![Home](screenshots/home.png)
+![Home](output/home.png)
+
+### Sample
+![Model](output/model.png)
 
 ### Model Performance
-![Model](screenshots/model.png)
+![Model](output/performace.png)
 
 ---
 
